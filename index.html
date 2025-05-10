@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Influencer Movie Star Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Influencer Movie Star Game</h1>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#career">Career</a></li>
+                <li><a href="#studio">Studio</a></li>
+                <li><a href="#business">Business</a></li>
+                <li><a href="#training">Training</a></li>
+                <li><a href="#magazines">Magazines</a></li>
+                <li><a href="#promo">Promo Code</a></li>
+                <li><a href="#awards">Awards</a></li>
+            </ul>
+        </nav>
+
+        <section id="career">
+            <h2>Career Progression</h2>
+            <div class="career-status">
+                <p>Choose your career: <button onclick="chooseCareer('actor')">Actor</button> | <button onclick="chooseCareer('singer')">Singer</button></p>
+                <p id="career-selected">No career selected</p>
+                <p id="career-info">No career information yet</p>
+            </div>
+        </section>
+
+        <section id="studio">
+            <h2>Studio</h2>
+            <button onclick="createMovie()">Create Movie</button>
+            <button onclick="createSong()">Create Song</button>
+            <button onclick="sellContent()">Sell Content</button>
+            <button onclick="startStudio()">Start Studio</button>
+        </section>
+
+        <section id="business">
+            <h2>Business Management</h2>
+            <button onclick="startBusiness()">Start New Business</button>
+            <p>Current Business: <span id="current-business">None</span></p>
+            <p id="business-status">Business Status: None</p>
+        </section>
+
+        <section id="training">
+            <h2>Training</h2>
+            <button onclick="takeClass('acting')">Take Acting Class</button>
+            <button onclick="takeClass('vocals')">Take Vocals Class</button>
+            <button onclick="takeClass('media')">Take Media Training</button>
+            <p id="training-status">Training Progress: None</p>
+        </section>
+
+        <section id="magazines">
+            <h2>Magazines & Branding</h2>
+            <p id="magazine-list">Appeared in: None</p>
+            <button onclick="appearInMagazine('Vogue')">Appear in Vogue</button>
+        </section>
+
+        <section id="promo">
+            <h2>Promo Code</h2>
+            <input type="text" id="promo-code" placeholder="Enter Promo Code">
+            <button onclick="applyPromoCode()">Apply Code</button>
+            <p id="promo-result"></p>
+        </section>
+
+        <section id="awards">
+            <h2>Awards</h2>
+            <p id="award-list">Awards: None</p>
+            <button onclick="winAward('Oscar')">Win Oscar</button>
+            <button onclick="winAward('Grammy')">Win Grammy</button>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Influencer Movie Star Game</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
