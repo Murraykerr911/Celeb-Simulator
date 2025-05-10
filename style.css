@@ -1,3 +1,4 @@
+/* Global Styles */
 * {
     margin: 0;
     padding: 0;
@@ -5,74 +6,69 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     background-color: #121212;
     color: white;
-    line-height: 1.6;
+    padding: 20px;
 }
 
-header {
-    background-color: #1f1f1f;
+.game-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
     text-align: center;
-    padding: 1rem;
 }
 
-h1 {
-    font-size: 2rem;
+header h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
 }
 
-nav {
-    text-align: center;
-    background-color: #333;
-    padding: 0.5rem;
-}
-
-nav ul {
-    list-style-type: none;
-}
-
-nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
-
-nav ul li a {
-    color: #bbb;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-nav ul li a:hover {
-    color: white;
-}
-
-.container {
-    width: 80%;
-    margin: auto;
-}
-
-section {
-    margin: 2rem 0;
+.stats p {
+    font-size: 1.2em;
+    margin: 10px 0;
 }
 
 button {
-    background-color: #ff5c5c;
+    background-color: #2C3E50;
     color: white;
+    padding: 10px 20px;
+    font-size: 1em;
     border: none;
-    padding: 0.8rem 1.2rem;
-    margin: 10px 0;
     cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s;
+    border-radius: 5px;
+    margin: 10px;
+    width: 200px;
 }
 
 button:hover {
-    background-color: #ff3838;
+    background-color: #34495E;
 }
 
-footer {
+input[type="text"] {
+    padding: 10px;
+    font-size: 1em;
+    width: 300px;
+    border: none;
+    background-color: #2C3E50;
+    color: white;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+button:disabled {
+    background-color: #555;
+}
+
+button, input[type="text"] {
     text-align: center;
-    padding: 1rem;
-    background-color: #1f1f1f;
-    margin-top: 2rem;
+}
+
+#business-options, #weekly-events, .career-options {
+    margin-top: 30px;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
 }
