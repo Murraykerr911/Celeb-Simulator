@@ -1,114 +1,69 @@
-let career = null;
-let business = null;b
-let magazines = [];
-let awards = [];
-let promoCodes = ["LEVELUP", "BONUS100"];
-let cash = 1000;
-let energy = 100;
-let perception = 100;
-let currentStudio = null;
-let businessStatus = "Inactive";
+let cash = 5000;
+let fame = 50;
+let level = 1;
+let charisma = 5;
+let acting = 5;
+let voice = 3;
+let stockValue = 100;
+let stockOwned = 0;
+let businessCreated = false;
 
-function chooseCareer(choice) {
-    career = choice;
-    document.getElementById('career-selected').textContent = `Your career: ${career}`;
-    document.getElementById('career-info').textContent = `You are now a ${career}. Train hard to improve your skills.`;
+// Career Paths
+const careerPaths = {
+    Actor: { charisma: 5, acting: 7, voice: 3, fame: 10, salary: 500 },
+    Singer: { charisma: 6, acting: 3, voice: 7, fame: 15, salary: 600 },
+    Director: { charisma: 7, acting: 5, voice: 4, fame: 20, salary: 700 },
+    Producer: { charisma: 5, acting: 3, voice: 5, fame: 18, salary: 800 },
+};
+
+// Update Stats
+function updateStats() {
+    document.getElementById('cash').textContent = `Cash: $${cash}`;
+    document.getElementById('fame').textContent = `Fame: ${fame}`;
+    document.getElementById('level').textContent = `Level: ${level}`;
+    document.getElementById('charisma').textContent = `Charisma: ${charisma}`;
+    document.getElementById('acting').textContent = `Acting: ${acting}`;
+    document.getElementById('voice').textContent = `Voice: ${voice}`;
+    document.getElementById('stock').textContent = `Stock: $${stockValue}`;
 }
 
-function createMovie() {
-    if (energy < 10) {
-        alert("Not enough energy!");
-        return;
+// Career Progression
+document.getElementById('actor').addEventListener('click', () => startCareer('Actor'));
+document.getElementById('singer').addEventListener('click', () => startCareer('Singer'));
+document.getElementById('director').addEventListener('click', () => startCareer('Director'));
+document.getElementById('producer').addEventListener('click', () => startCareer('Producer'));
+
+function startCareer(career) {
+    let careerPath = careerPaths[career];
+    if (careerPath) {
+        charisma = careerPath.charisma;
+        acting = careerPath.acting;
+        voice = careerPath.voice;
+        fame += careerPath.fame;
+        cash += careerPath.salary;
+        alert(`${career} Career Started!`);
+        updateStats();
     }
-    energy -= 10;
-    alert("Movie created!");
 }
 
-function createSong() {
-    if (energy < 10) {
-        alert("Not enough energy!");
-        return;
-    }
-    energy -= 10;
-    alert("Song created!");
-}
-
-function sellContent() {
-    if (!career) {
-        alert("Select a career first!");
-        return;
-    }
-    let earning = Math.floor(Math.random() * 500) + 100;
-    cash += earning;
-    alert(`You earned $${earning} from selling content.`);
-}
-
-function startStudio() {
-    if (!career) {
-        alert("Choose a career to start a studio.");
-        return;
-    }
-    currentStudio = career === "actor" ? "Film Studio" : "Music Label";
-    alert(`${career} studio started: ${currentStudio}`);
-}
-
-function startBusiness() {
-    if (cash < 500) {
-        alert("Not enough money to start a business!");
-        return;
-    }
-    cash -= 500;
-    business = "Movie Production";
-    document.getElementById('current-business').textContent = business;
-    document.getElementById('business-status').textContent = `Business Status: Active`;
-    alert("Business started!");
-}
-
-function takeClass(classType) {
-    if (energy < 20) {
-        alert("Not enough energy!");
-        return;
-    }
-    energy -= 20;
-    alert(`${classType} class taken!`);
-}
-
-function applyPromoCode() {
-    const code = document.getElementById("promo-code").value;
-    if (promoCodes.includes(code)) {
-        if (code === "LEVELUP") {
-            alert("Level up! Gained 500 cash.");
-            cash += 500;
-        } else if (code === "BONUS100") {
-            alert("Bonus 100 cash!");
-            cash += 100;
-        }
-        document.getElementById("promo-result").textContent = `Promo code applied! New balance: $${cash}`;
+// Business Creation
+document.getElementById('create-business').addEventListener('click', () => {
+    if (!businessCreated) {
+        createBusiness();
+        businessCreated = true;
     } else {
-        alert("Invalid promo code.");
+        alert("Business already created!");
     }
+});
+
+function createBusiness() {
+    let businessType = prompt("Enter business type (Movie Studio, Music Label, Tech Startup):");
+    alert(`${businessType} Business Created!`);
+    updateStats();
 }
 
-function addMagazine(award) {
-    magazines.push(award);
-    document.getElementById('magazine-list').textContent = `Appeared in: ${magazines.join(", ")}`;
-}
-
-function addAward(award) {
-    awards.push(award);
-    document.getElementById('award-list').textContent = `Awards: ${awards.join(", ")}`;
-}
-
-// Dummy magazines and awards for fun
-setTimeout(() => {
-    addMagazine("Vogue");
-    addAward("Oscar");
-}, 3000);
-
-function appearInMagazine(magazineName) {
-    addMagazine(magazineName);
-}
-
-function winAward(awardName) {
-    addAward(awardName);
-}
+// Weekly Events
+document.getElementById('next-week').addEventListener('click', () => {
+    level++;
+    fame += 20;
+    cash
